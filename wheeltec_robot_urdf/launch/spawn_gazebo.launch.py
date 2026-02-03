@@ -88,6 +88,16 @@ def generate_launch_description():
 		],
 	)
 
+	bridge = Node(
+		package="ros_gz_bridge",
+		executable="parameter_bridge",
+		output="screen",
+		arguments=[
+			"/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
+			"/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry",
+		],
+	)
+
 	return LaunchDescription(
 		[
 			urdf_arg,
@@ -96,5 +106,6 @@ def generate_launch_description():
 			gz_sim,
 			OpaqueFunction(function=_create_state_publisher),
 			spawn_entity,
+			bridge,
 		]
 	)

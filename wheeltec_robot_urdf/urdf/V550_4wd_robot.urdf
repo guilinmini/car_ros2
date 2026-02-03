@@ -415,4 +415,22 @@
     <axis
       xyz="0 0 0" />
   </joint>
+
+  <gazebo>
+    <plugin
+      filename="libignition-gazebo6-diff-drive-system.so"
+      name="ignition::gazebo::systems::DiffDrive">
+      <left_joint>lf_wheel_joint</left_joint>
+      <left_joint>lb_wheel_joint</left_joint>
+      <right_joint>rf_wheel_joint</right_joint>
+      <right_joint>rb_wheel_joint</right_joint>
+      <wheel_separation>0.18915</wheel_separation>
+      <wheel_radius>0.032</wheel_radius>
+      <topic>cmd_vel</topic>
+      <odom_topic>odom</odom_topic>
+      <odom_frame>odom</odom_frame>
+      <base_frame>base_link</base_frame>
+      <odom_publish_frequency>50</odom_publish_frequency>
+    </plugin>
+  </gazebo>
 </robot>

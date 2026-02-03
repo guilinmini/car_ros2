@@ -1,61 +1,100 @@
-import os
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess, TimerAction
+from launch.actions import (
+	DeclareLaunchArgument,
+	IncludeLaunchDescription,
+	OpaqueFunction,
+	SetEnvironmentVariable,
+)
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
+from ament_index_python.packages import get_package_share_directory
+
+import os
 
 
 def generate_launch_description():
-    robot_name_in_model = 'car_test'
-    package_name = 'wheeltec_robot_urdf'
-    urdf_name = "V550_4wd_robot.urdf"
+	pkg_share = get_package_share_directory("wheeltec_robot_urdf")
+	default_urdf = os.path.join(pkg_share, "urdf", "V550_4wd_robot.urdf")
 
-    ld = LaunchDescription()
-    pkg_share = FindPackageShare(package=package_name).find(package_name)
-    urdf_model_path = os.path.join(pkg_share, f'urdf/{urdf_name}')
+	urdf_arg = DeclareLaunchArgument(
+		"urdf",
+		default_value=default_urdf,
+		description="Absolute path to robot URDF file",
+	)
+	gz_args_arg = DeclareLaunchArgument(
+		"gz_args",
+		default_value="-r empty.sdf",
+		description="Gazebo args, e.g. '-r empty.sdf' or '-r -v 4 empty.sdf'",
+	)
 
-    # Start Gazebo server
-    start_gazebo_cmd =  ExecuteProcess(
-        cmd=['gazebo', '--verbose','-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'],
-        output='screen')
+	gz_args = LaunchConfiguration("gz_args")
 
-    # Gazebo server (no GUI)
-    gzserver_cmd = ExecuteProcess(
-        cmd=[
-            'gzserver',
-            '--verbose',
-            '-s', 'libgazebo_ros_init.so',
-            '-s', 'libgazebo_ros_factory.so'
-        ],
-        output='screen'
-    )
+	def _create_state_publisher(context, *args, **kwargs):
+		urdf_path = LaunchConfiguration("urdf").perform(context)
+		with open(urdf_path, "r", encoding="utf-8") as f:
+			robot_description = f.read()
 
-    # Gazebo client (GUI)
-    gzclient_cmd = ExecuteProcess(
-        cmd=['gzclient'],
-        output='screen'
-    )
+		return [
+			Node(
+				package="robot_state_publisher",
+				executable="robot_state_publisher",
+				name="robot_state_publisher",
+				output="screen",
+				parameters=[
+					{
+						"use_sim_time": True,
+						"robot_description": robot_description,
+					}
+				],
+			)
+		]
 
-    # Launch the robot
-    spawn_entity_cmd = TimerAction(
-        period=5.0,
-        actions=[
-            Node(
-                package='gazebo_ros',
-                executable='spawn_entity.py',
-                arguments=[
-                    '-entity', robot_name_in_model,
-                    '-file', urdf_model_path
-                ],
-                output='screen'
-            )
-        ]
-    )
+	resource_paths = [os.path.dirname(pkg_share)]
+	existing_resource_path = os.environ.get("GZ_SIM_RESOURCE_PATH", "")
+	if existing_resource_path:
+		resource_paths.append(existing_resource_path)
 
-    # ld.add_action(start_gazebo_cmd)
-    ld.add_action(gzserver_cmd)
-    ld.add_action(gzclient_cmd)
-    ld.add_action(spawn_entity_cmd)
+	set_gz_resource_path = SetEnvironmentVariable(
+		"GZ_SIM_RESOURCE_PATH", os.pathsep.join(resource_paths)
+	)
 
+	gz_sim = IncludeLaunchDescription(
+		PythonLaunchDescriptionSource(
+			os.path.join(
+				get_package_share_directory("ros_gz_sim"),
+				"launch",
+				"gz_sim.launch.py",
+			)
+		),
+		launch_arguments={"gz_args": gz_args}.items(),
+	)
 
-    return ld
+	spawn_entity = Node(
+		package="ros_gz_sim",
+		executable="create",
+		output="screen",
+		arguments=[
+			"-name",
+			"wheeltec",
+			"-topic",
+			"/robot_description",
+			"-x",
+			"0",
+			"-y",
+			"0",
+			"-z",
+			"0.2",
+		],
+	)
+
+	return LaunchDescription(
+		[
+			urdf_arg,
+			gz_args_arg,
+			set_gz_resource_path,
+			gz_sim,
+			OpaqueFunction(function=_create_state_publisher),
+			spawn_entity,
+		]
+	)

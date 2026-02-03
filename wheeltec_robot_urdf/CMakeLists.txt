@@ -17,7 +17,6 @@ endif()
 ################################################################################
 find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
-find_package(gazebo_ros REQUIRED)
 
 ################################################################################
 # Install

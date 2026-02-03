@@ -95,7 +95,7 @@
     <child
       link="lf_wheel_link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
   </joint>
   <link
     name="lb_wheel_link">
@@ -148,7 +148,7 @@
     <child
       link="lb_wheel_link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
   </joint>
   <link
     name="rb_wheel_link">

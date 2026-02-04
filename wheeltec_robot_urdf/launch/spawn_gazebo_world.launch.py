@@ -94,10 +94,30 @@ def generate_launch_description():
 		executable="parameter_bridge",
 		output="screen",
 		arguments=[
+			"/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock",
 			"/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
 			"/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry",
 			"/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
 		],
+	)
+
+	static_tf_wheeltec_laser = Node(
+		package="tf2_ros",
+		executable="static_transform_publisher",
+		name="static_tf_wheeltec_laser",
+		output="screen",
+		arguments=["0", "0", "0", "0", "0", "0",
+			"laser",
+			"wheeltec/base_link/laser",
+		],
+	)
+
+	ekf = Node(
+		package="robot_localization",
+    executable="ekf_node",
+    name="ekf_filter_node",
+    output="screen",
+    parameters=[os.path.join(pkg_share, "config", "ekf.yaml")],
 	)
 
 	return LaunchDescription(
@@ -108,6 +128,8 @@ def generate_launch_description():
 			gz_sim,
 			OpaqueFunction(function=_create_state_publisher),
 			spawn_entity,
+			static_tf_wheeltec_laser,
 			bridge,
+			ekf,
 		]
 	)

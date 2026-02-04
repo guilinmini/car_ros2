@@ -1,0 +1,30 @@
+ekf_filter_node:
+  ros__parameters:
+    use_sim_time: true
+    frequency: 30.0
+    sensor_timeout: 0.1
+
+    # ===== 坐标系定义（非常关键）=====
+    map_frame: map
+    odom_frame: wheeltec/odom
+    base_link_frame: wheeltec/base_link
+    world_frame: wheeltec/odom
+
+    publish_tf: true
+    publish_acceleration: false
+
+    # ===== 只用 Gazebo 的里程计 =====
+    odom0: /odom
+    odom0_config: [
+      true,  true,  false,   # x, y, z
+      false, false, false,   # roll, pitch, yaw
+      true,  true,  false,   # vx, vy, vz
+      false, false, false,   # vroll, vpitch, vyaw
+      false, false, false    # ax, ay, az
+    ]
+
+    odom0_differential: false
+    odom0_relative: false
+
+    # Ign Gazebo 的 odom 通常已经是 world 对齐的
+    two_d_mode: true

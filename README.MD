@@ -20,3 +20,9 @@ ros2 launch wheeltec_robot_urdf spawn_gazebo.launch.py urdf:=path/to/your.urdf
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+
+# Dependent
+
+```
+sudo apt install ros-humble-robot-localization
+```

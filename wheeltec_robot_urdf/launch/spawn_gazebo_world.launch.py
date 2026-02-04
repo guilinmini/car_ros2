@@ -16,7 +16,7 @@ import os
 def generate_launch_description():
 	pkg_share = get_package_share_directory("wheeltec_robot_urdf")
 	default_urdf = os.path.join(pkg_share, "urdf", "V550_4wd_robot.urdf")
-	default_world = os.path.join(pkg_share, "worlds", "living_room.sdf")
+	default_world = os.path.join(pkg_share, "worlds", "car_world.sdf")
 
 	urdf_arg = DeclareLaunchArgument(
 		"urdf",
@@ -96,6 +96,7 @@ def generate_launch_description():
 		arguments=[
 			"/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
 			"/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry",
+			"/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
 		],
 	)
 

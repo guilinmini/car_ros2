@@ -1,0 +1,373 @@
+<sdf version='1.9'>
+  <model name='V550_4wd_robot'>
+    <link name='base_link'>
+      <inertial>
+        <pose>-0.011126603031799 0.0009751110371740549 0.05221354926832905 0 0 0</pose>
+        <mass>0.55320034002331275</mass>
+        <inertia>
+          <ixx>0.0012491590148970731</ixx>
+          <ixy>1.246748051582334e-05</ixy>
+          <ixz>0.00019080233922181029</ixz>
+          <iyy>0.0020472715936055109</iyy>
+          <iyz>-1.230336214679801e-05</iyz>
+          <izz>0.0022258751574574611</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__camera_link_collision_1'>
+        <pose>0.00160091195407918 -0.000100553048343928 0.152137 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/camera_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__controller_link_collision_2'>
+        <pose>-0.0539080491826598 -0.011432266551253 0.1135 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/controller_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__laser_collision_3'>
+        <pose>0.08347679443810389 1.32296970931968e-05 0.09655 0 0 -3.14159265358979</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/laser.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.436275 0.436275 0.436275 1</diffuse>
+          <ambient>0.436275 0.436275 0.436275 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__camera_link_visual_1'>
+        <pose>0.00160091195407918 -0.000100553048343928 0.152137 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/camera_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__controller_link_visual_2'>
+        <pose>-0.0539080491826598 -0.011432266551253 0.1135 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/controller_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__laser_visual_3'>
+        <pose>0.08347679443810389 1.32296970931968e-05 0.09655 0 0 -3.14159265358979</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/laser.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.470588 0.470588 0.470588 1</diffuse>
+          <ambient>0.470588 0.470588 0.470588 1</ambient>
+        </material>
+      </visual>
+      <sensor name='laser' type='gpu_lidar'>
+        <pose relative_to='laser'>0 0 0 0 0 0</pose>
+        <update_rate>10</update_rate>
+        <topic>scan</topic>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.1415899999999999</min_angle>
+              <max_angle>3.1415899999999999</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>10</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+    <joint name='lb_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.08165408804592079 0.0945904469516561 0.0167 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>lb_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='lb_wheel_link'>
+      <pose relative_to='lb_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>3.82211208516114e-09 -0.000959117661118294 -3.67368547991853e-07 0 0 0</pose>
+        <mass>0.043265160014746097</mass>
+        <inertia>
+          <ixx>1.74274247813233e-05</ixx>
+          <ixy>-1.9719222337664e-09</ixy>
+          <ixz>2.4280650976592099e-09</ixz>
+          <iyy>2.9723476298987399e-05</iyy>
+          <iyz>3.6439855055080703e-11</iyz>
+          <izz>1.74447664850641e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='lb_wheel_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/lb_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='lb_wheel_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/lb_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='lf_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>0.0759459119540792 0.0945904469516561 0.0167 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>lf_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='lf_wheel_link'>
+      <pose relative_to='lf_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>5.02039364941309e-09 -0.000959117731609865 -3.67099444911756e-07 0 0 0</pose>
+        <mass>0.043265162136450701</mass>
+        <inertia>
+          <ixx>1.7427424903918698e-05</ixx>
+          <ixy>-1.9718158217925201e-09</ixy>
+          <ixz>2.42780558212303e-09</ixz>
+          <iyy>2.9723477743477699e-05</iyy>
+          <iyz>3.6501613662175597e-11</iyz>
+          <izz>1.7444767851886299e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='lf_wheel_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/lf_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='lf_wheel_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/lf_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='rb_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.08165408804592079 -0.09456355304834391 0.016701 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>rb_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rb_wheel_link'>
+      <pose relative_to='rb_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>5.0420245339966e-09 0.0009591178339224961 1.41173722285198e-07 0 0 0</pose>
+        <mass>0.043265160706460103</mass>
+        <inertia>
+          <ixx>1.7427424689506799e-05</ixx>
+          <ixy>1.9718425950420102e-09</ixy>
+          <ixz>-2.42795742055245e-09</ixz>
+          <iyy>2.9723476849439299e-05</iyy>
+          <iyz>3.64472773779085e-11</iyz>
+          <izz>1.7444767161045699e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rb_wheel_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/rb_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='rb_wheel_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/rb_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='rf_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>0.0759459119540792 -0.09456355304834391 0.016701 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>rf_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-10000000000000000</lower>
+          <upper>10000000000000000</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rf_wheel_link'>
+      <pose relative_to='rf_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>5.16426455071661e-09 0.000959117797785097 1.41259390941395e-07 0 0 0</pose>
+        <mass>0.0432651606285765</mass>
+        <inertia>
+          <ixx>1.7427424775695e-05</ixx>
+          <ixy>1.9718242601610399e-09</ixy>
+          <ixz>-2.4279323542240799e-09</ixz>
+          <iyy>2.9723476691825298e-05</iyy>
+          <iyz>3.6482530298349901e-11</iyz>
+          <izz>1.74447669258113e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='rf_wheel_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/rf_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='rf_wheel_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://wheeltec_robot_urdf/meshes/V550_4wd_robot_meshes/rf_wheel_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <plugin name='ignition::gazebo::systems::DiffDrive' filename='libignition-gazebo6-diff-drive-system.so'>
+      <left_joint>lf_wheel_joint</left_joint>
+      <left_joint>lb_wheel_joint</left_joint>
+      <right_joint>rf_wheel_joint</right_joint>
+      <right_joint>rb_wheel_joint</right_joint>
+      <wheel_separation>0.18915</wheel_separation>
+      <wheel_radius>0.032</wheel_radius>
+      <topic>cmd_vel</topic>
+      <odom_topic>odom</odom_topic>
+      <odom_frame>odom</odom_frame>
+      <base_frame>base_link</base_frame>
+      <odom_publish_frequency>50</odom_publish_frequency>
+    </plugin>
+    <frame name='camera_joint' attached_to='base_link'>
+      <pose>0.001601 -0.000101 0.152137 0 -0 0</pose>
+    </frame>
+    <frame name='camera_link' attached_to='camera_joint'/>
+    <frame name='controller_joint' attached_to='base_link'>
+      <pose>-0.053908 -0.011432 0.1135 0 -0 0</pose>
+    </frame>
+    <frame name='controller_link' attached_to='controller_joint'/>
+    <frame name='laser_joint' attached_to='base_link'>
+      <pose>0.083477 1.3e-05 0.09655 0 0 -3.14159</pose>
+    </frame>
+    <frame name='laser' attached_to='laser_joint'/>
+  </model>
+</sdf>

@@ -97,8 +97,39 @@ def generate_launch_description():
 			"/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
 			"/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry",
 			"/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
+			"/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V",
 		],
 	)
+
+	odom_to_tf = Node(
+		package="wheeltec_robot_urdf",
+		executable="odom_to_tf.py",
+		name="odom_to_tf",
+		output="screen",
+	)
+
+	static_tf_wheeltec_laser = Node(
+		package="tf2_ros",
+		executable="static_transform_publisher",
+		name="static_tf_wheeltec_laser",
+		output="screen",
+		arguments=["0", "0", "0", "0", "0", "0",
+			"laser",
+			"wheeltec/base_link/laser",
+		],
+	)
+
+	static_tf_wheeltec_base_link = Node(
+		package="tf2_ros",
+		executable="static_transform_publisher",
+		name="static_tf_wheeltec_base_link",
+		output="screen",
+		arguments=["0", "0", "0", "0", "0", "0",
+			"wheeltec/base_link",
+			"base_link",
+		],
+	)
+
 
 	return LaunchDescription(
 		[
@@ -108,6 +139,9 @@ def generate_launch_description():
 			gz_sim,
 			OpaqueFunction(function=_create_state_publisher),
 			spawn_entity,
+			static_tf_wheeltec_laser,
+			static_tf_wheeltec_base_link,
 			bridge,
+			odom_to_tf,
 		]
 	)

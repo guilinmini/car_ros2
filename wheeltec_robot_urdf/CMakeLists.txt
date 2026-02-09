@@ -21,8 +21,13 @@ find_package(urdf REQUIRED)
 ################################################################################
 # Install
 ################################################################################
-install(DIRECTORY launch meshes rviz urdf worlds sdf
+install(DIRECTORY launch meshes rviz urdf worlds sdf config
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+  scripts/odom_to_tf.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ################################################################################

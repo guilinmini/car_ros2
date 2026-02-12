@@ -41,10 +41,17 @@ def generate_launch_description():
         parameters=[{"robot_description": robot_description, "use_sim_time": True}],
     )
 
-    # Joint state publisher GUI (same behavior as display launch)
     joint_state_publisher_node = Node(
-        package="joint_state_publisher_gui",
-        executable="joint_state_publisher_gui",
+        package="joint_state_publisher",
+        executable="joint_state_publisher",
+        parameters=[
+            {
+                "robot_description": robot_description,
+                "use_sim_time": True,
+                "publish_default_positions": True,
+            }
+        ],
+        output="screen",
     )
 
     gazebo = IncludeLaunchDescription(

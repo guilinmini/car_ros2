@@ -48,7 +48,19 @@ def generate_launch_description():
 						"robot_description": robot_description,
 					}
 				],
-			)
+			),
+			Node(
+				package="joint_state_publisher",
+				executable="joint_state_publisher",
+				parameters=[
+					{
+						"robot_description": robot_description,
+						"use_sim_time": True,
+						"publish_default_positions": True,
+					}
+				],
+				output="screen",
+			),
 		]
 
 	resource_paths = [os.path.dirname(pkg_share)]

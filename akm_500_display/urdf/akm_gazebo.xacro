@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Gazebo physics and plugin settings -->
+    <gazebo reference="base_link">
+        <material>Gazebo/Blue</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <gazebo reference="laser_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="camera_link">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <gazebo reference="controller_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="lb_wheel_link">
+        <material>Gazebo/White</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+    </gazebo>
+
+    <gazebo reference="lf_wheel_link">
+        <material>Gazebo/White</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+    </gazebo>
+
+    <gazebo reference="rb_wheel_link">
+        <material>Gazebo/White</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+    </gazebo>
+
+    <gazebo reference="rf_wheel_link">
+        <material>Gazebo/White</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+    </gazebo>
+
+    <!-- ROS 2 Control Plugin for Gazebo -->
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find akm_500_display)/config/akm_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+</robot>

@@ -3,6 +3,6 @@
 
     <xacro:include filename="$(find akm_500_display)/urdf/akm_base.xacro" />
     <xacro:include filename="$(find akm_500_display)/urdf/akm_gazebo.xacro" />
-    <xacro:include filename="$(find akm_500_display)/urdf/akm_ros2_control.xacro" />
+    <!-- <xacro:include filename="$(find akm_500_display)/urdf/akm_ros2_control.xacro" /> -->
 
 </robot>

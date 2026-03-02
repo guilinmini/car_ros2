@@ -67,13 +67,20 @@ def generate_launch_description():
         package="ros_gz_sim",
         executable="create",
         output="screen",
-        arguments=["-topic", "robot_description", "-name", "v550_akm"],
+        arguments=[
+            "-name", "v550_akm",
+            "-topic", "/robot_description",
+            "-x", "0", "-y", "0", "-z", "0.2",
+          ],
     )
 
     gz_ros2_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
         arguments=[
+            "/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
+            "/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry",
+            "/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V",
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
         ],
     )

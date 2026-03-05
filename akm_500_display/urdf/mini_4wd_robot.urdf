@@ -73,8 +73,9 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lf_wheel_link.STL" />
+        <!-- <mesh
+          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lf_wheel_link.STL" /> -->
+        <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
   </link>
@@ -126,8 +127,9 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lb_wheel_link.STL" />
+        <!-- <mesh
+          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lb_wheel_link.STL" /> -->
+        <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
   </link>
@@ -179,8 +181,9 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rb_wheel_link.STL" />
+        <!-- <mesh
+          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rb_wheel_link.STL" /> -->
+        <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
   </link>
@@ -232,8 +235,9 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rf_wheel_link.STL" />
+        <!-- <mesh
+          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rf_wheel_link.STL" /> -->
+        <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
   </link>

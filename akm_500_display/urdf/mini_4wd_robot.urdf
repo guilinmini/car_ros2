@@ -91,6 +91,7 @@
       link="lf_wheel_link" />
     <axis
       xyz="0 1 0" />
+    <dynamics damping="0.2"/>
   </joint>
   <link
     name="lb_wheel_link">
@@ -145,6 +146,7 @@
       link="lb_wheel_link" />
     <axis
       xyz="0 1 0" />
+    <dynamics damping="0.2"/>
   </joint>
   <link
     name="rb_wheel_link">
@@ -199,6 +201,7 @@
       link="rb_wheel_link" />
     <axis
       xyz="0 1 0" />
+    <dynamics damping="0.2"/>
   </joint>
   <link
     name="rf_wheel_link">
@@ -253,6 +256,7 @@
       link="rf_wheel_link" />
     <axis
       xyz="0 1 0" />
+    <dynamics damping="0.2"/>
   </joint>
   <link
     name="laser_link">

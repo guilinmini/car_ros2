@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from ament_index_python.packages import get_package_share_directory
@@ -14,6 +15,8 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     akm_500_display_dir = get_package_share_directory("akm_500_display")
+
+    world_path = os.path.join(akm_500_display_dir, 'worlds', 'room_world.sdf')
 
     gazebo_resource_path = SetEnvironmentVariable(
         name="GZ_SIM_RESOURCE_PATH",
@@ -83,7 +86,7 @@ def generate_launch_description():
                 [PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
                                        'launch',
                                        'gz_sim.launch.py'])]),
-            launch_arguments=[('gz_args', [' -r -v 1 empty.sdf'])]),
+            launch_arguments=[('gz_args', [' -r -v 1 ' + world_path])]),
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=gz_spawn_entity,

@@ -12,19 +12,19 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
-    akm_500_display_dir = get_package_share_directory("akm_500_display")
+    wheeltec_robot_display_dir = get_package_share_directory("wheeltec_robot_display")
 
     model_arg = DeclareLaunchArgument(
         name="model",
         default_value=os.path.join(
-            akm_500_display_dir, "urdf", "akm.urdf.xacro"
+            wheeltec_robot_display_dir, "urdf", "akm.urdf.xacro"
         ),
         description="Absolute path to robot urdf file",
     )
 
     gazebo_resource_path = SetEnvironmentVariable(
         name="GZ_SIM_RESOURCE_PATH",
-        value=[str(Path(akm_500_display_dir).parent.resolve())],
+        value=[str(Path(wheeltec_robot_display_dir).parent.resolve())],
     )
 
     robot_description = ParameterValue(

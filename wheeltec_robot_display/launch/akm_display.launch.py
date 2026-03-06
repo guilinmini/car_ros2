@@ -10,11 +10,11 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 
 def generate_launch_description():
-    akm_500_display_dir = get_package_share_directory("akm_500_display")
+    wheeltec_robot_display_dir = get_package_share_directory("wheeltec_robot_display")
 
     model_arg = DeclareLaunchArgument(
         name="model",
-        default_value=os.path.join(akm_500_display_dir, "urdf", "akm.urdf.xacro"),
+        default_value=os.path.join(wheeltec_robot_display_dir, "urdf", "akm.urdf.xacro"),
         description="Absolute path to robot urdf file",
     )
 
@@ -44,7 +44,7 @@ def generate_launch_description():
         executable="rviz2",
         name="rviz2",
         output="screen",
-        arguments=["-d", os.path.join(akm_500_display_dir, "rviz", "display.rviz")],
+        arguments=["-d", os.path.join(wheeltec_robot_display_dir, "rviz", "display.rviz")],
     )
 
     return LaunchDescription(

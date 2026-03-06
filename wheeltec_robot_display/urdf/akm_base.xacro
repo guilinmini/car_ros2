@@ -33,7 +33,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/base_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -47,7 +47,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/base_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -73,7 +73,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/laser_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/laser_link.STL" />
       </geometry>
       <material
         name="">
@@ -87,7 +87,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/laser_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/laser_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -126,7 +126,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/camera_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/camera_link.STL" />
       </geometry>
       <material
         name="">
@@ -140,7 +140,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/camera_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/camera_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -179,7 +179,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/controller_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/controller_link.STL" />
       </geometry>
       <material
         name="">
@@ -193,7 +193,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/controller_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/controller_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -232,7 +232,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/lb_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/lb_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -246,7 +246,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/lb_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/lb_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -285,7 +285,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/lf_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/lf_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -299,7 +299,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/lf_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/lf_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -338,7 +338,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/rb_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/rb_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -352,7 +352,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/rb_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/rb_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -391,7 +391,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/rf_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/rf_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -405,7 +405,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/V550_akm_robot_meshes/rf_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/V550_akm_robot_meshes/rf_wheel_link.STL" />
       </geometry>
     </collision>
   </link>

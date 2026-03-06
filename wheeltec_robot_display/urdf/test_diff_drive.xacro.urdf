@@ -259,7 +259,7 @@
       <ros>
         <namespace>$(arg namespace)</namespace>
       </ros>
-      <parameters>$(find akm_500_display)/config/diff_drive_controller.yaml</parameters>
+      <parameters>$(find wheeltec_robot_display)/config/diff_drive_controller.yaml</parameters>
     </plugin>
   </gazebo>
 

@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<robot name="V550_akm_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-    <xacro:include filename="$(find akm_500_display)/urdf/akm_base.xacro" />
-    <xacro:include filename="$(find akm_500_display)/urdf/akm_gazebo.xacro" />
-    <!-- <xacro:include filename="$(find akm_500_display)/urdf/akm_ros2_control.xacro" /> -->
-
-</robot>

@@ -21,7 +21,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/base_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -35,7 +35,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/base_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -60,7 +60,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lf_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/lf_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -74,7 +74,7 @@
         rpy="1.5707 0 0" />
       <geometry>
         <!-- <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lf_wheel_link.STL" /> -->
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/lf_wheel_link.STL" /> -->
         <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
@@ -115,7 +115,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lb_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/lb_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -129,7 +129,7 @@
         rpy="1.5707 0 0" />
       <geometry>
         <!-- <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/lb_wheel_link.STL" /> -->
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/lb_wheel_link.STL" /> -->
         <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
@@ -170,7 +170,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rb_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/rb_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -184,7 +184,7 @@
         rpy="1.5707 0 0" />
       <geometry>
         <!-- <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rb_wheel_link.STL" /> -->
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/rb_wheel_link.STL" /> -->
         <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
@@ -225,7 +225,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rf_wheel_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/rf_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -239,7 +239,7 @@
         rpy="1.5707 0 0" />
       <geometry>
         <!-- <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/rf_wheel_link.STL" /> -->
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/rf_wheel_link.STL" /> -->
         <cylinder radius="0.03" length="0.02"/>
       </geometry>
     </collision>
@@ -280,7 +280,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/laser.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/laser.STL" />
       </geometry>
       <material
         name="">
@@ -294,7 +294,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/laser.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/laser.STL" />
       </geometry>
     </collision>
   </link>
@@ -333,7 +333,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/controller_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/controller_link.STL" />
       </geometry>
       <material
         name="">
@@ -347,7 +347,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/controller_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/controller_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -386,7 +386,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/camera_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/camera_link.STL" />
       </geometry>
       <material
         name="">
@@ -400,7 +400,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://akm_500_display/meshes/mini_4wd_robot_meshes/camera_link.STL" />
+          filename="package://wheeltec_robot_display/meshes/mini_4wd_robot_meshes/camera_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -464,7 +464,7 @@
         <remapping>/diff_drive_base_controller/cmd_vel_unstamped:=/cmd_vel</remapping>
         <remapping>/diff_drive_base_controller/odom:=/odom</remapping>
       </ros>
-      <parameters>$(find akm_500_display)/config/mini_4wd_controller.yaml</parameters>
+      <parameters>$(find wheeltec_robot_display)/config/mini_4wd_controller.yaml</parameters>
     </plugin>
   </gazebo>
 

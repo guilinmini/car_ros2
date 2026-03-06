@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>akm_500_display</name>
+  <name>wheeltec_robot_display</name>
   <version>0.0.0</version>
-  <description> ROS 2 package providing the description files (URDF/Xacro), launch files, and
-    configuration for the Wheeltec V550 AKM robot, supporting simulation and visualization in Gazebo. </description>
+  <description>ROS 2 package providing description, launch, config, and simulation files for Wheeltec robot display.</description>
   <maintainer email="user@example.com">user</maintainer>
   <license>Apache-2.0</license>
 

@@ -1,49 +1,44 @@
-# Copyright 2022 Open Source Robotics Foundation, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+import os
+from pathlib import Path
+
+from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.actions import RegisterEventHandler
+from launch.actions import IncludeLaunchDescription, RegisterEventHandler, SetEnvironmentVariable
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    # Launch Arguments
-    use_sim_time = LaunchConfiguration('use_sim_time', default=True)
+    wheeltec_robot_display_dir = get_package_share_directory("wheeltec_robot_display")
 
-    # Get URDF via xacro
+    world_path = os.path.join(wheeltec_robot_display_dir, 'worlds', 'room_world.sdf')
+
+    gazebo_resource_path = SetEnvironmentVariable(
+        name="GZ_SIM_RESOURCE_PATH",
+        value=[str(Path(wheeltec_robot_display_dir).parent.resolve())],
+    )
+
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name='xacro')]),
             ' ',
             PathJoinSubstitution(
-                [FindPackageShare('akm_500_display'),
-                 'urdf', 'test_diff_drive.xacro.urdf']
+                [FindPackageShare('wheeltec_robot_display'),
+                 'urdf', 'mini_4wd_robot.urdf']
             ),
         ]
     )
     robot_description = {'robot_description': robot_description_content}
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare('akm_500_display'),
+            FindPackageShare('wheeltec_robot_display'),
             'config',
-            'diff_drive_controller.yaml',
+            'mini_4wd_controller.yaml',
         ]
     )
 
@@ -59,7 +54,7 @@ def generate_launch_description():
         executable='create',
         output='screen',
         arguments=['-topic', 'robot_description', '-name',
-                   'diff_drive', '-allow_renaming', 'true'],
+                   'mini_4wd_robot', '-allow_renaming', 'true', '-x', '0', '-y', '0', '-z', '0.1'],
     )
 
     joint_state_broadcaster_spawner = Node(
@@ -77,7 +72,6 @@ def generate_launch_description():
             ],
     )
 
-    # Bridge
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
@@ -86,13 +80,13 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        # Launch gazebo environment
+        gazebo_resource_path,
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 [PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
                                        'launch',
                                        'gz_sim.launch.py'])]),
-            launch_arguments=[('gz_args', [' -r -v 1 empty.sdf'])]),
+            launch_arguments=[('gz_args', [' -r -v 1 ' + world_path])]),
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=gz_spawn_entity,
@@ -108,9 +102,4 @@ def generate_launch_description():
         bridge,
         node_robot_state_publisher,
         gz_spawn_entity,
-        # Launch Arguments
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value=use_sim_time,
-            description='If true, use simulated clock'),
     ])
